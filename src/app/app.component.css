@@ -3,3 +3,29 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
+
+.reservationTable {
+  margin: 0 auto;
+}
+
+.reservationTable::after{
+  content: ' ';
+  clear: both;
+}
+
+.column {
+  width: 200px;
+  float: left;
+}
+
+.hoursColumn {
+  margin-top: 67px;
+}
+
+.timeSlot {
+  background-color: green;
+}
+
+.timeSlot.full {
+  background-color: red;
+}

@@ -1,12 +1,19 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    {{title}}
+    {{title}} - {{today}}
   </h1>
-    <div *ngFor="let playground of playgrounds | async">
-       <div *ngFor="let hour of playground">
-         {{ hour | json }}
+  <div class="reservationTable">
+    <div class="hoursColumn column">
+      <div *ngFor="let hour of hours">
+        {{ hour }}
       </div>
     </div>
-
+    <div *ngFor="let arena of arenas" class="arenaColumn column">
+      <h2>{{arena.name}}</h2>
+      <div *ngFor="let hour of arena.hours | async" [ngClass]="{'timeSlot': true, 'full': hour.obsaezeno == 1 }">
+        {{ hour.cena }}
+      </div>
+    </div>
+</div>
 </div>
