@@ -3,6 +3,8 @@
   <h1>
     {{title}} - {{today}}
   </h1>
+  <input [ngModel]="today"
+          (ngModelChange)="setDate($event)" type="date" >
   <div class="reservationTable">
     <div class="hoursColumn column">
       <div *ngFor="let hour of hours">
@@ -11,8 +13,11 @@
     </div>
     <div *ngFor="let arena of arenas" class="arenaColumn column">
       <h2>{{arena.name}}</h2>
-      <div *ngFor="let hour of arena.hours | async" [ngClass]="{'timeSlot': true, 'full': hour.obsaezeno == 1 }">
-        {{ hour.cena }}
+      <div *ngFor="let hour of arena.hours | async" [ngClass]="{'timeSlot': true, 'full': hour.isFull == 1 }">
+        {{ hour.price }} Kč
+      </div>
+      <div *ngIf="!(arena.hours | async)">
+        Litujeme, pro toto sportoviště, nemáme informace o obsazenosti pro tento den.
       </div>
     </div>
 </div>

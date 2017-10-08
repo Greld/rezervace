@@ -9,24 +9,37 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent {
   title = 'Rezervace'; 
-  today = '20160219'; 
+  today = new Date().toJSON().slice(0,10);
   arenas: [{
     id: number,
     name: String,
     hours: Observable<any[]>
   }]; 
   hours = [];
+  defaultDate: Date;
+  db: AngularFireDatabase;
 
   constructor(db: AngularFireDatabase) {
-    for (var i = 0; i < 24; i++) { this.hours.push(i);}
+    this.db = db;
+    for (var i = 6; i < 23; i+=0.5) { this.hours.push(Math.floor(i).toString().padStart(2, "0") + ":" + ((i - Math.floor(i)) * 60).toString().padStart(2, "0"));}
+    this.setRezervationData();    
+  }
+
+  setDate(date){
+    this.today = date;
+    this.setRezervationData();
+  }
+
+  setRezervationData(){
     this.arenas = [{
       id: 1,
       name: "Sprint", 
-      hours: db.list('/playground/' + this.today + '/1').valueChanges()
+      hours: this.db.list('/court-availability/' + this.today + '/1').valueChanges()
     },{
       id: 2,
       name: "VUT", 
-      hours: db.list('/playground/' + this.today + '/2').valueChanges()
+      hours: this.db.list('/court-availability/' + this.today + '/2').valueChanges()
     }];
   }
+
 }
