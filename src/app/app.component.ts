@@ -13,6 +13,7 @@ export class AppComponent {
   arenas: [{
     id: number,
     name: String,
+    skymUrl: String,
     hours: Observable<any[]>
   }]; 
   hours = [];
@@ -34,12 +35,18 @@ export class AppComponent {
     this.arenas = [{
       id: 1,
       name: "Sprint", 
+      skymUrl: "https://badminton.skym.cz/sportoviste/sprint/",
       hours: this.db.list('/court-availability/' + this.today + '/1').valueChanges()
     },{
       id: 2,
       name: "VUT", 
+      skymUrl: "https://badminton.skym.cz/sportoviste/cesa-vut-telocvicna-purkynova/",
       hours: this.db.list('/court-availability/' + this.today + '/2').valueChanges()
     }];
+  }
+
+  getReservationUrl(arenaId, date) {
+    return "https://badminton.skym.cz/sportoviste/?id=" + arenaId + "&sport=0&date=" + date;
   }
 
 }

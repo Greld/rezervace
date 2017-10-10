@@ -7,14 +7,15 @@
           (ngModelChange)="setDate($event)" type="date" >
   <div class="reservationTable">
     <div class="hoursColumn column">
-      <div *ngFor="let hour of hours">
-        {{ hour }}
+      <div class="tableCell" *ngFor="let hour of hours">
+        <span class="tableCellWrap">{{ hour }}</span>
       </div>
     </div>
     <div *ngFor="let arena of arenas" class="arenaColumn column">
-      <h2>{{arena.name}}</h2>
-      <div *ngFor="let hour of arena.hours | async" [ngClass]="{'timeSlot': true, 'full': hour.availability == 0 }">
-        {{ hour.price }} Kč - {{hour.availability}}
+      <h2><a href="{{arena.skymUrl}}" target="_blank" rel="noopener" title="Zobrazit detail haly na sKým.cz.">{{arena.name}}</a></h2>
+      <div *ngFor="let hour of arena.hours | async" [ngClass]="{'timeSlot': true, 'tableCell': true, 'full': hour.availability == 0 }">
+        <a *ngIf="hour.availability != 0" class="tableCellWrap" href="{{getReservationUrl(arena.id, today)}}" target="_blank" rel="noopener" title="Rezervovat kurt přes sKým.cz.">{{ hour.price }} Kč - {{hour.availability}} volné</a>
+        <span *ngIf="hour.availability == 0" class="tableCellWrap">{{ hour.price }} Kč - plno</span>
       </div>
       <div *ngIf="!(arena.hours | async)">
         Litujeme, pro toto sportoviště, nemáme informace o obsazenosti pro tento den.
