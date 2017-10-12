@@ -19,6 +19,14 @@ export class AppComponent {
   hours = [];
   defaultDate: Date;
   db: AngularFireDatabase;
+  priceGroups = [{
+    id: 1,
+    name: "Dospělí"
+  }, {
+    id: 2,
+    name: "Studenti"
+  }];
+  priceGroupId = this.priceGroups[0].id;
 
   constructor(db: AngularFireDatabase) {
     this.db = db;
