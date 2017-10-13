@@ -46,10 +46,15 @@ export class AppComponent {
       skymUrl: "https://badminton.skym.cz/sportoviste/sprint/",
       hours: this.db.list('/court-availability/' + this.today + '/1').valueChanges()
     },{
-      id: 2,
-      name: "VUT", 
+      id: 98,
+      name: "CESA VUT tělocvična Purkyňova", 
       skymUrl: "https://badminton.skym.cz/sportoviste/cesa-vut-telocvicna-purkynova/",
-      hours: this.db.list('/court-availability/' + this.today + '/2').valueChanges()
+      hours: this.db.list('/court-availability/' + this.today + '/98').valueChanges()
+    },{
+      id: 99,
+      name: "CESA VUT - tělocvična F1", 
+      skymUrl: "https://badminton.skym.cz/sportoviste/cesa-vut-sa-ppv---telocvicna-f1/",
+      hours: this.db.list('/court-availability/' + this.today + '/99').valueChanges()
     }];
   }
 
