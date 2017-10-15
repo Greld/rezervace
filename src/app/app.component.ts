@@ -11,7 +11,8 @@ export class AppComponent {
   title = 'Rezervace'; 
   today = new Date().toJSON().slice(0,10);
   arenas: [{
-    id: number,
+    arenaId: number,
+    playgroundId: number,
     name: String,
     skymUrl: String,
     hours: Observable<any[]>
@@ -41,37 +42,44 @@ export class AppComponent {
 
   setRezervationData(){
     this.arenas = [{
-      id: 1,
+      arenaId: 1,
+      playgroundId: 1,
       name: "Sprint", 
-      skymUrl: "https://badminton.skym.cz/sportoviste/sprint/",
+      skymUrl: "https://skym.cz/sportoviste/sprint/",
       hours: this.db.list('/court-availability/' + this.today + '/1').valueChanges()
     },{
-      id: 98,
+      arenaId: 93,
+      playgroundId: 98,
       name: "CESA VUT tělocvična Purkyňova", 
-      skymUrl: "https://badminton.skym.cz/sportoviste/cesa-vut-telocvicna-purkynova/",
+      skymUrl: "https://skym.cz/sportoviste/cesa-vut-telocvicna-purkynova/",
       hours: this.db.list('/court-availability/' + this.today + '/98').valueChanges()
     },{
-      id: 99,
+      arenaId: 94,
+      playgroundId: 99,
       name: "CESA VUT - tělocvična F1", 
-      skymUrl: "https://badminton.skym.cz/sportoviste/cesa-vut-sa-ppv---telocvicna-f1/",
+      skymUrl: "https://skym.cz/sportoviste/cesa-vut-sa-ppv---telocvicna-f1/",
       hours: this.db.list('/court-availability/' + this.today + '/99').valueChanges()
     },{
-      id: 33,
+      arenaId: 35,
+      playgroundId: 33,
       name: "Sportcentrum Kuklenská", 
       skymUrl: "https://skym.cz/sportoviste/sportcentrum-kuklenska/",
       hours: this.db.list('/court-availability/' + this.today + '/33').valueChanges()
     },{
-      id: 44,
+      arenaId: 41,
+      playgroundId: 44,
       name: "Badminton Židenice", 
       skymUrl: "https://skym.cz/sportoviste/badminton-zidenice/",
       hours: this.db.list('/court-availability/' + this.today + '/44').valueChanges()
     },{
-      id: 54,
+      arenaId: 50,
+      playgroundId: 54,
       name: "Yonex Jehnice", 
       skymUrl: "https://skym.cz/sportoviste/yonex-jehnice/",
       hours: this.db.list('/court-availability/' + this.today + '/54').valueChanges()
     },{
-      id: 39,
+      arenaId: 38,
+      playgroundId: 39,
       name: "Club Classic", 
       skymUrl: "https://skym.cz/sportoviste/club-classic/badminton/",
       hours: this.db.list('/court-availability/' + this.today + '/39').valueChanges()
@@ -79,7 +87,7 @@ export class AppComponent {
   }
 
   getReservationUrl(arenaId, date) {
-    return "https://badminton.skym.cz/sportoviste/?id=" + arenaId + "&sport=0&date=" + date;
+    return "https://skym.cz/sportoviste/?id=" + arenaId + "&sport=0&date=" + date;
   }
 
 }
