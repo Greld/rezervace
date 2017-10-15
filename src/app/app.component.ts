@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  timeIsUp = false;
   title = 'Rezervace'; 
   today = new Date().toJSON().slice(0,10);
   arenas: [{
@@ -32,15 +33,16 @@ export class AppComponent {
   constructor(db: AngularFireDatabase) {
     this.db = db;
     for (var i = 6; i < 23; i+=0.5) { this.hours.push(Math.floor(i).toString().padStart(2, "0") + ":" + ((i - Math.floor(i)) * 60).toString().padStart(2, "0"));}
-    this.setRezervationData();    
+    this.setReservationData();    
   }
 
   setDate(date){
     this.today = date;
-    this.setRezervationData();
+    this.setReservationData();
   }
 
-  setRezervationData(){
+  setReservationData(){
+    this.timeIsUp = false;
     this.arenas = [{
       arenaId: 1,
       playgroundId: 1,
@@ -82,8 +84,11 @@ export class AppComponent {
       playgroundId: 39,
       name: "Club Classic", 
       skymUrl: "https://skym.cz/sportoviste/club-classic/badminton/",
-      hours: this.db.list('/court-availability/' + this.today + '/39').valueChanges()
+      hours: this.db.list('/court-availability/' + this.today + '/391').valueChanges()
     }];
+    setTimeout(() => {
+      this.timeIsUp = true;
+    }, 3000);
   }
 
   getReservationUrl(arenaId, date) {
