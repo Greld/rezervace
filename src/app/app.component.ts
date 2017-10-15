@@ -84,7 +84,7 @@ export class AppComponent {
       playgroundId: 39,
       name: "Club Classic", 
       skymUrl: "https://skym.cz/sportoviste/club-classic/badminton/",
-      hours: this.db.list('/court-availability/' + this.today + '/391').valueChanges()
+      hours: this.db.list('/court-availability/' + this.today + '/39').valueChanges()
     }];
     setTimeout(() => {
       this.timeIsUp = true;
