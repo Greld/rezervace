@@ -5,7 +5,8 @@ h1 { color: #369; font-family: Arial, Helvetica, sans-serif; font-size: 250%; }
 .arenaTitle a:hover,
 .arenaTitle a:focus { text-decoration: underline; }
 
-.reservationTable { margin: 0 auto; }
+.reservationBox {max-width: 100%; overflow: scroll; }
+.reservationTable { width: 1500px; margin: 0 auto; }
 .reservationTable::after{ content: ' '; clear: both; }
 
 .column { width: 200px; float: left; }
