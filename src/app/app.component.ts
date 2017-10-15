@@ -55,6 +55,26 @@ export class AppComponent {
       name: "CESA VUT - tělocvična F1", 
       skymUrl: "https://badminton.skym.cz/sportoviste/cesa-vut-sa-ppv---telocvicna-f1/",
       hours: this.db.list('/court-availability/' + this.today + '/99').valueChanges()
+    },{
+      id: 33,
+      name: "Sportcentrum Kuklenská", 
+      skymUrl: "https://skym.cz/sportoviste/sportcentrum-kuklenska/",
+      hours: this.db.list('/court-availability/' + this.today + '/33').valueChanges()
+    },{
+      id: 44,
+      name: "Badminton Židenice", 
+      skymUrl: "https://skym.cz/sportoviste/badminton-zidenice/",
+      hours: this.db.list('/court-availability/' + this.today + '/44').valueChanges()
+    },{
+      id: 54,
+      name: "Yonex Jehnice", 
+      skymUrl: "https://skym.cz/sportoviste/yonex-jehnice/",
+      hours: this.db.list('/court-availability/' + this.today + '/54').valueChanges()
+    },{
+      id: 39,
+      name: "Club Classic", 
+      skymUrl: "https://skym.cz/sportoviste/club-classic/badminton/",
+      hours: this.db.list('/court-availability/' + this.today + '/39').valueChanges()
     }];
   }
 
