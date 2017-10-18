@@ -1,26 +1,28 @@
 h1 { color: #369; font-family: Arial, Helvetica, sans-serif; font-size: 250%; }
 
+
 .textGray { color: rgb(88, 88, 88); }
 
-.arenaTitle { height: 80px; vertical-align: bottom; display: table-cell; padding: 20px 10px; text-align: center; width: 200px; }
+.reservationTableHeader .hourCell { width: 50px; }
+
+.reservationTableHeader .arenaCell {background-color: white; vertical-align: bottom; text-align: center; width: 140px;  }
 .arenaTitle a { color: black; text-decoration: none; }
 .arenaTitle a:hover,
 .arenaTitle a:focus { text-decoration: underline; }
 
-.reservationBox {max-width: 100%; overflow: scroll; }
-.reservationTable { width: 1500px; margin: 0 auto; }
-.reservationTable::after{ content: ' '; clear: both; }
+.reservationBox { max-width: 100%; margin-top: 30px; overflow: auto; }
 
-.column { width: 200px; float: left; }
-.hoursColumn { margin-top: 120px; width: 70px; }
-.tableCell { border: 1px solid rgb(90, 90, 90); } 
-.tableCellWrap { padding: 3px 8px; display: block; } 
-.timeSlot .tableCellWrap { background-color: rgb(125, 211, 125); }
-.timeSlot.full .tableCellWrap { background-color: #ebb2b2; }
-.timeSlot.closed .tableCellWrap { background-color: gray; }
-.timeSlot a { color: black; text-decoration: none; display: block; height: 100%; }
-.timeSlot a:hover,
-.timeSlot a:focus { opacity: 0.8; }
+.reservationTable { display: table; border-collapse: collapse; margin: 0 auto; }
+.reservationTable .reservationTableRow { display: table-row; }
+.reservationTable .reservationTableRow .reservationTableCell { display: table-cell; border: 1px solid rgb(90, 90, 90); padding: 5px 12px;}
+
+
+.arenaCell { background-color: rgb(125, 211, 125);  }
+.arenaCell.full { background-color: #ebb2b2; }
+.arenaCell.closed { background-color: gray; }
+.arenaCell a { color: black; text-decoration: none; }
+.arenaCell:hover,
+.arenaCell:focus { opacity: 0.8; }
 
 
 

@@ -7,33 +7,39 @@
   &nbsp;&nbsp;&nbsp;&nbsp;
   Cenová skupina: <select [(ngModel)]="priceGroupId">
     <option *ngFor="let priceGroup of priceGroups" [value]="priceGroup.id">{{priceGroup.name}}</option>
-  </select>
+  </select>  
   <div class="reservationBox">
-    <div class="reservationTable">
-      <div class="hoursColumn column">
-        <div class="tableCell" *ngFor="let hour of hours">
-          <span class="tableCellWrap">{{ hour }}</span>
+      <div class="reservationTable" *ngIf="availabilityObserver | async as availability; else loading">
+
+        <div class="reservationTableRow reservationTableHeader">
+            <div class="reservationTableCell hourCell">&nbsp;</div>
+            <div class="reservationTableCell arenaCell" *ngFor="let arena of arenas">
+                <h2 class="arenaTitle">
+                  <a href="{{arena.skymUrl}}" target="_blank" rel="noopener" title="Zobrazit detail haly na sKým.cz.">{{arena.name}}</a>
+                </h2>
+            </div>
         </div>
+
+        <div class="reservationTableRow" *ngFor="let hour of hours">       
+            <div class="reservationTableCell hourCell">{{ hour }}</div>
+            <div class="reservationTableCell arenaCell" *ngFor="let arena of arenas" [ngClass]="{'timeSlot': true, 'tableCell': true, 'full': availability[arena.playgroundId][hour].availability == 0, 'closed': !availability[arena.playgroundId][hour].price }">
+              <a *ngIf="availability[arena.playgroundId][hour].availability != 0 && availability[arena.playgroundId][hour].price" class="tableCellWrap" href="{{getReservationUrl(arena.arenaId, today)}}" target="_blank" rel="noopener" title="Rezervovat kurt přes sKým.cz.">{{ availability[arena.playgroundId][hour].price[priceGroupId] }} Kč<span class="textGray">, kurtů:</span> {{availability[arena.playgroundId][hour].availability}}</a>
+              <span *ngIf="availability[arena.playgroundId][hour].availability == 0 && availability[arena.playgroundId][hour].price" class="tableCellWrap">{{ availability[arena.playgroundId][hour].price[priceGroupId] }} Kč - plno</span>
+              <span *ngIf="!availability[arena.playgroundId][hour].price" class="tableCellWrap">zavřeno</span>
+            </div>
+        </div> 
       </div>
-      <div *ngFor="let arena of arenas" class="arenaColumn column">
-        <h2 class="arenaTitle"><a href="{{arena.skymUrl}}" target="_blank" rel="noopener" title="Zobrazit detail haly na sKým.cz.">{{arena.name}}</a></h2>
-        <div *ngFor="let hour of arena.hours | async" [ngClass]="{'timeSlot': true, 'tableCell': true, 'full': hour.availability == 0, 'closed': !hour.price }">
-          <a *ngIf="hour.availability != 0 && hour.price" class="tableCellWrap" href="{{getReservationUrl(arena.arenaId, today)}}" target="_blank" rel="noopener" title="Rezervovat kurt přes sKým.cz.">{{ hour.price[priceGroupId] }} Kč<span class="textGray">, kurtů:</span> {{hour.availability}}</a>
-          <span *ngIf="hour.availability == 0 && hour.price" class="tableCellWrap">{{ hour.price[priceGroupId] }} Kč - plno</span>
-          <span *ngIf="!hour.price" class="tableCellWrap">zavřeno</span>
-        </div>
-        <div *ngIf="!(arena.hours | async) && timeIsUp">
-          Litujeme, pro toto sportoviště, nemáme informace o obsazenosti pro tento den.
-        </div>
-        <div *ngIf="!(arena.hours | async) && !timeIsUp">
-          <div class="lds-bars">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
+
+      
+    <ng-template #loading let-availability>
+      <div class="lds-bars">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-    </div>
-  </div>
+    </ng-template>
+
+
+    </div>  
 </div>
