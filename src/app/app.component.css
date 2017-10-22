@@ -16,11 +16,15 @@ h1 { color: #0BBB9A; font-size: 250%; }
 .reservationTable .reservationTableRow { display: table-row; }
 .reservationTable .reservationTableRow .reservationTableCell { display: table-cell; border: 1px solid rgb(90, 90, 90); padding: 5px 12px;}
 
-
+.reservationTable .reservationTableRow .arenaCell { padding: 0; }
+.arenaCell>span, .arenaCell>a, .arenaCell>h2>a {
+    display: block; padding: 5px 12px;
+}
 .arenaCell { background-color: rgb(178, 234, 178);  }
 .arenaCell.full { background-color: #fbd6d6; }
 .arenaCell.closed { background-color: #b7b7b7; }
-.arenaCell a { color: black; text-decoration: none; }
+.arenaCell.closed>span { display: block; height: 100%; }
+.arenaCell a { display: block; color: black; text-decoration: none; }
 .arenaCell:hover,
 .arenaCell:focus { opacity: 0.8; }
 
