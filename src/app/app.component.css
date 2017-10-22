@@ -1,18 +1,18 @@
-h1 { color: #369; font-family: Arial, Helvetica, sans-serif; font-size: 250%; }
-
+h1 { color: #0BBB9A; font-size: 250%; }
 
 .textGray { color: rgb(88, 88, 88); }
 
-.reservationTableHeader .hourCell { width: 50px; }
+.hourCell { width: 50px; background-color: white; }
 
-.reservationTableHeader .arenaCell {background-color: white; vertical-align: bottom; text-align: center; width: 140px;  }
+.reservationTableHeader .arenaCell { background-color: white; vertical-align: middle; text-align: center; width: 140px;  }
+.arenaTitle { margin: 0; font-size: 17px; }
 .arenaTitle a { color: black; text-decoration: none; }
 .arenaTitle a:hover,
 .arenaTitle a:focus { text-decoration: underline; }
 
 .reservationBox { max-width: 100%; margin-top: 30px; overflow: auto; }
 
-.reservationTable { display: table; border-collapse: collapse; margin: 0 auto; }
+.reservationTable { display: table; border-collapse: collapse; margin: 0 auto 20px auto; }
 .reservationTable .reservationTableRow { display: table-row; }
 .reservationTable .reservationTableRow .reservationTableCell { display: table-cell; border: 1px solid rgb(90, 90, 90); padding: 5px 12px;}
 
@@ -24,7 +24,39 @@ h1 { color: #369; font-family: Arial, Helvetica, sans-serif; font-size: 250%; }
 .arenaCell:hover,
 .arenaCell:focus { opacity: 0.8; }
 
+.dateInput {
+    padding: 2px 12px;
+    border-radius: 15px;
+    border: 1px solid rgb(169, 169, 169);
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
 
+.priceGroupSelect {
+    padding: 4px 12px;
+    border-radius: 15px;
+    border: 1px solid rgb(169, 169, 169);
+    font-size: 16px;    
+    vertical-align: bottom;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+
+.filters { vertical-align: baseline; line-height: 28px; }
+
+.dateIcon {
+    width: 30px;
+    position: relative;
+    top: 7px;
+    margin-right: 7px;
+}
+.studentIcon {
+    width: 30px;
+    position: relative;
+    top: 7px;
+    margin-right: 7px;
+}
 
 /* LOADER */
 @keyframes lds-bars {

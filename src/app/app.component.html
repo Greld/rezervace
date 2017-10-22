@@ -3,11 +3,15 @@
   <h1>
     Rezervace kurtu na badminton v Brně
   </h1>
-  Datum: <input [ngModel]="today" (ngModelChange)="setDate($event)" type="date" >
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  Cenová skupina: <select [(ngModel)]="priceGroupId">
-    <option *ngFor="let priceGroup of priceGroups" [value]="priceGroup.id">{{priceGroup.name}}</option>
-  </select>  
+  <div class="filters">
+    <img src="./assets/images/date_icon.svg" class="dateIcon" alt="Datum:" title="Datum:"> 
+    <input [ngModel]="today" (ngModelChange)="setDate($event)" type="date" class="dateInput" >
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="./assets/images/student_icon.svg" class="studentIcon" alt="Cenová skupina:" title="Cenová skupina:"> 
+    <select [(ngModel)]="priceGroupId" class="priceGroupSelect">
+      <option *ngFor="let priceGroup of priceGroups" [value]="priceGroup.id">{{priceGroup.name}}</option>
+    </select>  
+  </div>
   <div class="reservationBox">
       <div class="reservationTable" *ngIf="availabilityObserver | async as availability; else loading">
 
