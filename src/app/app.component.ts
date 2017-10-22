@@ -73,6 +73,11 @@ export class AppComponent {
       playgroundId: 143,
       name: "Badminton Líšeň", 
       skymUrl: "https://skym.cz/sportoviste/badminton-lisen/badminton/"
+    },{
+      arenaId: 150,
+      playgroundId: 158,
+      name: "X-arena", 
+      skymUrl: "https://skym.cz/sportoviste/x-arena/badminton/"
     }];
 
     this.setReservationData();    
