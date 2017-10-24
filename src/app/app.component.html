@@ -1,16 +1,19 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Rezervace kurtu na badminton v Brně
+    Rezervace kurtu na&nbsp;badminton v&nbsp;Brně
   </h1>
   <div class="filters">
-    <img src="./assets/images/date_icon.svg" class="dateIcon" alt="Datum:" title="Datum:"> 
-    <input [ngModel]="today" (ngModelChange)="setDate($event)" type="date" class="dateInput" >
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="./assets/images/student_icon.svg" class="studentIcon" alt="Cenová skupina:" title="Cenová skupina:"> 
-    <select [(ngModel)]="priceGroupId" class="priceGroupSelect">
-      <option *ngFor="let priceGroup of priceGroups" [value]="priceGroup.id">{{priceGroup.name}}</option>
-    </select>  
+    <div class="filterBox dateBox">
+      <img src="./assets/images/date_icon.svg" class="dateIcon" alt="Datum:" title="Datum:"> 
+      <input [ngModel]="today" (ngModelChange)="setDate($event)" type="date" class="dateInput" >
+    </div>
+    <div class="filterBox priceGroupBox">
+      <img src="./assets/images/student_icon.svg" class="studentIcon" alt="Cenová skupina:" title="Cenová skupina:"> 
+      <select [(ngModel)]="priceGroupId" class="priceGroupSelect">
+        <option *ngFor="let priceGroup of priceGroups" [value]="priceGroup.id">{{priceGroup.name}}</option>
+      </select>  
+    </div>
   </div>
   <div class="reservationBox">
       <div class="reservationTable" *ngIf="availabilityObserver | async as availability; else loading">

@@ -4,8 +4,8 @@ h1 { color: #0BBB9A; font-size: 250%; }
 
 .hourCell { width: 50px; background-color: white; }
 
-.reservationTableHeader .arenaCell { background-color: white; vertical-align: middle; text-align: center; width: 140px;  }
-.arenaTitle { margin: 0; font-size: 17px; }
+.reservationTableHeader .arenaCell { background-color: white; vertical-align: middle; text-align: center;  }
+.arenaTitle { margin: 0; font-size: 17px; width: 140px; }
 .arenaTitle a { color: black; text-decoration: none; }
 .arenaTitle a:hover,
 .arenaTitle a:focus { text-decoration: underline; }
@@ -51,9 +51,11 @@ h1 { color: #0BBB9A; font-size: 250%; }
     width: 13px;
     position: relative;
     top: 2px;
+    opacity: 0.6;
 }
 
 .filters { vertical-align: baseline; line-height: 28px; }
+.filters .filterBox { display: inline-block; margin: 4px 6px; }
 
 .dateIcon {
     width: 30px;
