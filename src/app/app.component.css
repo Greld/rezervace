@@ -14,11 +14,13 @@ h1 { color: #0BBB9A; font-size: 250%; }
 
 .reservationTable { display: table; border-collapse: collapse; margin: 0 auto 20px auto; }
 .reservationTable .reservationTableRow { display: table-row; }
-.reservationTable .reservationTableRow .reservationTableCell { display: table-cell; border: 1px solid #ffffff; padding: 5px 12px;}
+.reservationTable .reservationTableRow .reservationTableCell { display: table-cell; border: 1px solid #ffffff; padding: 3px 12px; }
+.reservationTable .reservationTableRow:nth-child(2n+1) .reservationTableCell { border-bottom-width: 2px; }
+.reservationTable .reservationTableRow:nth-child(2n+1) .hourCell { color: #9c9c9c; }
 
 .reservationTable .reservationTableRow .arenaCell { border-right-width: 5px; padding: 0; }
 .arenaCell>span, .arenaCell>a, .arenaCell>h2>a {
-    display: block; padding: 5px 12px;
+    display: block; padding: 3px 12px;
 }
 .arenaCell { background-color: #87ef6d; }
 .arenaCell.full { background-color: #f9a67f; }
