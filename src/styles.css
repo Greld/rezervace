@@ -4,5 +4,21 @@ body {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     background-color: #f0fdf9;
+    margin: 0;
+    padding: 0;
 }
+
+#pageFooter {
+    color: grey;
+    background-color: #94f1df;
+    padding: 8px 12px;
+    margin-top: 20px;
+    border-top: 1px solid #e1e1e1;
+}
+#pageFooter a {
+    color: black;
+    text-decoration: underline;
+}
+#pageFooter a:hover,
+#pageFooter a:focus { text-decoration: none; }
 
