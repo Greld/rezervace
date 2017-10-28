@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="reservationBox">
-      <div class="reservationTable" *ngIf="availabilityObserver | async as availability; else loading">
+      <div class="reservationTable" *ngIf="availabilityObserver | async as availability; else loading" [ngClass]="{'firstColumnFixed' : firstColumnFixed}">
 
         <div class="reservationTableRow reservationTableHeader">
             <div class="reservationTableCell hourCell">&nbsp;</div>
@@ -32,7 +32,7 @@
                   <img src="./assets/images/price_icon.svg" class="priceIcon" alt="Cena:" title="Cena za 1 hodinu"> {{ availability[arena.playgroundId][hour].price[priceGroupId] }} Kč
                   <img src="./assets/images/court_icon.svg" class="courtIcon" alt="Kurtů:" title="Počet volných kurtů"> {{ availability[arena.playgroundId][hour].availability }}
               </a>
-              <span *ngIf="availability[arena.playgroundId][hour].availability == 0 && availability[arena.playgroundId][hour].price" class="tableCellWrap">
+              <span *ngIf="availability[arena.playgroundId][hour].availability == 0 && availability[arena.playgroundId][hour].price" class="tableCellWrap" title="Plně obsazeno">
                   <img src="./assets/images/price_icon.svg" class="priceIcon" alt="Cena:" title="Cena za 1 hodinu"> {{ availability[arena.playgroundId][hour].price[priceGroupId] }} Kč
                   <img src="./assets/images/court_icon.svg" class="courtIcon" alt="Kurtů:" title="Počet volných kurtů"> {{ availability[arena.playgroundId][hour].availability }}
               </span>              

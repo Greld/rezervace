@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
@@ -28,9 +28,12 @@ export class AppComponent {
   }];
   priceGroupId = this.priceGroups[0].id;
   availabilityObserver: Observable<any>;
+  firstColumnFixed = false;
+  el:ElementRef;
 
-  constructor(db: AngularFireDatabase) {
+  constructor(db: AngularFireDatabase, el:ElementRef) {
     this.db = db;
+    this.el = el;
     for (var i = 6; i < 23; i+=0.5) { this.hours.push(Math.floor(i).toString().padStart(2, "0") + ":" + ((i - Math.floor(i)) * 60).toString().padStart(2, "0"));}
     
     this.arenas = [{
@@ -82,6 +85,9 @@ export class AppComponent {
 
     this.setReservationData();    
   }
+  ngAfterViewInit() {
+    setTimeout(this.checkWidth.bind(this), 3000);
+  }
 
   setDate(date) {
     this.today = date;
@@ -94,6 +100,16 @@ export class AppComponent {
 
   getReservationUrl(arenaId, date) {
     return "https://skym.cz/sportoviste/?id=" + arenaId + "&sport=0&date=" + date;
+  }
+
+  checkWidth() {
+    var tableWidth = this.el.nativeElement.querySelector(".reservationTable").clientWidth;
+    var boxWidth = this.el.nativeElement.querySelector(".reservationBox").clientWidth;
+    if (tableWidth > boxWidth) {
+      this.firstColumnFixed = true;
+    } else {
+      this.firstColumnFixed = false;
+    }
   }
 
 }
