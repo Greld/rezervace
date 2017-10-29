@@ -101,11 +101,10 @@ export class AppComponent {
 
   setDate(date) {
     this.today = date;
-    this.setReservationData();
   }
 
   setReservationData() {
-    this.availabilityObserver = this.db.object('/court-availability/' + this.today).valueChanges();
+    this.availabilityObserver = this.db.object('/court-availability/').valueChanges();
   }
 
   getReservationUrl(arenaId, date) {
