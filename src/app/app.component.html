@@ -22,7 +22,7 @@
             <div class="reservationTableCell hourCell">&nbsp;</div>
             <a href="{{baseArenaUrl + arena.skymUrl}}" target="_blank" rel="noopener" title="Zobrazit detail haly na sKým.cz." class="reservationTableCell arenaCell" *ngFor="let arena of firebase.arenas">
               <span class="bgBox" [ngStyle]="{'background-image': 'url(' + baseArenaImg + arena.img + ')' }"></span>
-              <div class="arenaTitle"><span>{{arena.name}}</span></div>
+              <div class="arenaTitle"><span [fittext]="true" [activateOnResize]="true" [minFontSize]="10" [useMaxFontSize]="true">{{arena.name}}</span></div>
             </a>
         </div>
 
