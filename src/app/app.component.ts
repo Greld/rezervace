@@ -14,7 +14,8 @@ export class AppComponent {
     arenaId: number,
     playgroundId: number,
     name: String,
-    skymUrl: String
+    skymUrl: String,
+    img: String
   }]; 
   hours = [];
   defaultDate: Date;
@@ -40,47 +41,56 @@ export class AppComponent {
       arenaId: 1,
       playgroundId: 1,
       name: "Sprint", 
-      skymUrl: "https://skym.cz/sportoviste/sprint/"
+      skymUrl: "https://skym.cz/sportoviste/sprint/",
+      img: "https://skym.cz/assets/uploads/arenas/1/1435734816_profilovka.gif"
     },{
       arenaId: 93,
       playgroundId: 98,
-      name: "CESA VUT tělocvična Purkyňova", 
-      skymUrl: "https://skym.cz/sportoviste/cesa-vut-telocvicna-purkynova/"
+      name: "CESA VUT - Purkyňova", 
+      skymUrl: "https://skym.cz/sportoviste/cesa-vut-telocvicna-purkynova/",
+      img: "https://skym.cz/assets/uploads/arenas/93/1444919454_purk2.png"
     },{
       arenaId: 94,
       playgroundId: 99,
       name: "CESA VUT - tělocvična F1", 
-      skymUrl: "https://skym.cz/sportoviste/cesa-vut-sa-ppv---telocvicna-f1/"
+      skymUrl: "https://skym.cz/sportoviste/cesa-vut-sa-ppv---telocvicna-f1/",
+      img: "https://skym.cz/assets/uploads/arenas/94/1454330025_profil2.jpg"
     },{
       arenaId: 35,
       playgroundId: 33,
       name: "Sportcentrum Kuklenská", 
-      skymUrl: "https://skym.cz/sportoviste/sportcentrum-kuklenska/"
+      skymUrl: "https://skym.cz/sportoviste/sportcentrum-kuklenska/",
+      img: "https://skym.cz/assets/uploads/arenas/35/1434719741_kuklenska_profil.jpg"
     },{
       arenaId: 41,
       playgroundId: 44,
       name: "Badminton Židenice", 
-      skymUrl: "https://skym.cz/sportoviste/badminton-zidenice/"
+      skymUrl: "https://skym.cz/sportoviste/badminton-zidenice/",
+      img: "https://badminton.skym.cz/assets/uploads/arenas/41/1434902776_profilovka2.jpg"
     },{
       arenaId: 50,
       playgroundId: 54,
       name: "Yonex Jehnice", 
-      skymUrl: "https://skym.cz/sportoviste/yonex-jehnice/"
+      skymUrl: "https://skym.cz/sportoviste/yonex-jehnice/",
+      img: "https://badminton.skym.cz/assets/uploads/arenas/50/1459857242_profil-z-webu.png"
     },{
       arenaId: 38,
       playgroundId: 39,
       name: "Club Classic", 
-      skymUrl: "https://skym.cz/sportoviste/club-classic/badminton/"
+      skymUrl: "https://skym.cz/sportoviste/club-classic/badminton/",
+      img: "https://badminton.skym.cz/assets/uploads/arenas/38/1434733098_classic_profil.jpg"
     },{
       arenaId: 135,
       playgroundId: 143,
       name: "Badminton Líšeň", 
-      skymUrl: "https://skym.cz/sportoviste/badminton-lisen/badminton/"
+      skymUrl: "https://skym.cz/sportoviste/badminton-lisen/badminton/",
+      img: "https://badminton.skym.cz/assets/uploads/arenas/135/1453886128_profil2.jpg"
     },{
       arenaId: 150,
       playgroundId: 158,
       name: "X-arena", 
-      skymUrl: "https://skym.cz/sportoviste/x-arena/badminton/"
+      skymUrl: "https://skym.cz/sportoviste/x-arena/badminton/",
+      img: "https://badminton.skym.cz/assets/uploads/arenas/150/1478036885_xarena.png"
     }];
 
     this.setReservationData();    

@@ -21,7 +21,8 @@
         <div class="reservationTableRow reservationTableHeader">
             <div class="reservationTableCell hourCell">&nbsp;</div>
             <a href="{{arena.skymUrl}}" target="_blank" rel="noopener" title="Zobrazit detail haly na sKým.cz." class="reservationTableCell arenaCell" *ngFor="let arena of arenas">
-              {{arena.name}}
+              <span class="bgBox" [ngStyle]="{'background-image': 'url(' + arena.img + ')' }"></span>
+              <div class="arenaTitle"><span>{{arena.name}}</span></div>
             </a>
         </div>
 

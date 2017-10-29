@@ -1,0 +1,32 @@
+[debug] [2017-10-29T10:50:39.707Z] ----------------------------------------------------------------------
+[debug] [2017-10-29T10:50:39.710Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Honza\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2017-10-29T10:50:39.711Z] CLI Version:   3.13.1
+[debug] [2017-10-29T10:50:39.711Z] Platform:      win32
+[debug] [2017-10-29T10:50:39.711Z] Node Version:  v6.9.4
+[debug] [2017-10-29T10:50:39.712Z] Time:          Sun Oct 29 2017 11:50:39 GMT+0100 (Střední Evropa (běžný čas))
+[debug] [2017-10-29T10:50:39.712Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-29T10:50:39.729Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-29T10:50:39.729Z] > authorizing via signed-in user
+[debug] [2017-10-29T10:50:39.732Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-10-29T10:50:39.732Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/65_bDbwrZ_fJNF-z382VeCpcnZxHjGNl0_qx2HIGIDpHg4EkDEWjOuHp4wB51lwQ',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Oct 29 2017 11:50:39 GMT+0100 (Střední Evropa (běžný čas))
+[debug] [2017-10-29T10:50:39.899Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-29T10:50:39.912Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/firebase-skymsk  
+ Sun Oct 29 2017 11:50:39 GMT+0100 (Střední Evropa (běžný čas))
+[debug] [2017-10-29T10:50:42.100Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-29T10:50:42.101Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/skymsk/tokens  
+ Sun Oct 29 2017 11:50:42 GMT+0100 (Střední Evropa (běžný čas))
+[debug] [2017-10-29T10:50:43.942Z] <<< HTTP RESPONSE 200
+[info] 1
+[info] 
+[info] === Deploying to 'firebase-skymsk'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing dist directory for upload...
+[debug] [2017-10-29T10:50:47.722Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/skymsk/uploads/-KxbkL-hFzho_-MDrKA8?fileCount=16&message=  
+ Sun Oct 29 2017 11:50:47 GMT+0100 (Střední Evropa (běžný čas))

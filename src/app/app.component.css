@@ -15,10 +15,19 @@ h1 { color: #0BBB9A; font-size: 32px; margin: 20px 5px 8px 5px; text-shadow: 2px
 .firstColumnFixed .hourCell { position: absolute; left: 0; z-index: 1; padding: 3px; }
 .firstColumnFixed .reservationTableHeader .hourCell { visibility: hidden; }
 
-.reservationTableRow.reservationTableHeader .arenaCell { background-color: #94f1df; vertical-align: middle; text-align: center; border-top-width: 0; color: #333; text-decoration: none; font-size: 15px; letter-spacing: 0.5px; width: 100px; min-width: 100px; padding: 5px 12px; font-weight: bold; }
-.reservationTableRow.reservationTableHeader .arenaCell:hover,
-.reservationTableRow.reservationTableHeader .arenaCell:focus { background-color: #5ee4c9; } 
-
+.reservationTableRow.reservationTableHeader .arenaCell { background-color: white; vertical-align: middle; text-align: center; border-top-width: 0; color: #333; text-decoration: none; font-size: 15px; letter-spacing: 0.5px; width: 100px; min-width: 100px; padding: 5px 12px; font-weight: bold; }
+.reservationTableRow.reservationTableHeader .arenaCell:hover  .bgBox,
+.reservationTableRow.reservationTableHeader .arenaCell:focus  .bgBox { opacity: 1; } 
+.reservationTableRow.reservationTableHeader .arenaCell { height: 115px; position: relative; }
+.reservationTableRow.reservationTableHeader .arenaCell .bgBox { transition: opacity 0.3s ease-out; padding: 0; opacity: 0.7; position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: block; background-image: url(https://badminton.skym.cz/assets/images/noArenaPhoto.jpg); background-size: contain; }
+.reservationTableRow.reservationTableHeader .arenaCell .arenaTitle { display: table-cell; height: 37px; width: 100%; position: absolute; bottom: 0; left: 0; padding: 3px 0; background-color: rgba(0,0,0, 0.5);  }
+.reservationTableRow.reservationTableHeader .arenaCell .arenaTitle>span { display: table-cell;
+    vertical-align: middle;
+    width: 118px;
+    height: 37px;
+    padding: 0 3px;
+    text-align: center; 
+    color: white; }
 .reservationTableRow:nth-child(2n+1) .reservationTableCell { border-bottom-width: 2px; }
 .reservationTableRow:nth-child(2n+1) .hourCell { color: #9c9c9c; }
 
