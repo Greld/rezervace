@@ -7,7 +7,7 @@
 .reservationTableRow .reservationTableCell { display: table-cell; border: 1px solid #ffffff; padding: 3px 12px; transition: background-color 0.3s ease-out; }
 
 .reservationTableRow .hourCell { width: 40px; transition: padding 0.3s ease-out; background-color: white; border-bottom-color: #f2f2ff; border-right-width: 5px; border-left-width: 5px; }
-.reservationTableRow.reservationTableHeader .hourCell { visibility: hidden; border-top-color: transparent; border-left-color: transparent; border-bottom-color: white; }
+.reservationTableRow.reservationTableHeader .hourCell { border-top-color: transparent; border-left-color: transparent; border-bottom-color: white; background-color: transparent; }
 .reservationTableRow:last-child .hourCell { border-bottom-color: #fff; }
 .firstColumnFixed.reservationTable { margin-left: 57px; }
 .firstColumnFixed .hourCell { position: absolute; left: 0; z-index: 1; padding: 3px; }
