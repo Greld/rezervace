@@ -8,7 +8,7 @@
       </div>
       <div class="leftPart">
         <h1>
-          <a href="https://rezervace-kurtu.cz">rezervace-kurtu.cz</a><span class="appendix"> - obsazenost kurtů na badminton v Brně</span>
+          <a href="https://rezervace-kurtu.cz">rezervace-kurtu.cz</a><span class="appendix"> &middot; obsazenost kurtů na badminton v Brně</span>
         </h1>
       </div>
     </div>
@@ -25,15 +25,17 @@
       </select>  
     </div>
   </div>
-  <div class="reservationBox">
-      <div class="reservationTable" *ngIf="firebaseObserver | async as firebase; else loading" [ngClass]="{'firstColumnFixed' : firstColumnFixed}">
+  <div *ngIf="firebaseObserver | async as firebase; else loading">
+
+    <div class="reservationBox">
+      <div class="reservationTable" [ngClass]="{'firstColumnFixed' : firstColumnFixed}">
 
         <div class="reservationTableRow reservationTableHeader">
-            <div class="reservationTableCell hourCell">&nbsp;</div>
-            <a href="{{baseArenaUrl + arena.skymUrl}}" target="_blank" rel="noopener" title="Zobrazit detail haly na sKým.cz." class="reservationTableCell arenaCell" *ngFor="let arena of firebase.arenas">
-              <span class="bgBox" [ngStyle]="{'background-image': 'url(' + baseArenaImg + arena.img + ')' }"></span>
-              <div class="arenaTitle"><span [fittext]="true" [activateOnResize]="true" [minFontSize]="10" [useMaxFontSize]="true">{{arena.name}}</span></div>
-            </a>
+          <div class="reservationTableCell hourCell">&nbsp;</div>
+          <a href="{{baseArenaUrl + arena.skymUrl}}" target="_blank" rel="noopener" title="Zobrazit detail haly na sKým.cz." class="reservationTableCell arenaCell" *ngFor="let arena of firebase.arenas">
+            <span class="bgBox" [ngStyle]="{'background-image': 'url(' + baseArenaImg + arena.img + ')' }"></span>
+            <div class="arenaTitle"><span [fittext]="true" [activateOnResize]="true" [minFontSize]="10" [useMaxFontSize]="true">{{arena.name}}</span></div>
+          </a>
         </div>
 
         <ng-container *ngIf="firebase.availability[today]">
@@ -57,21 +59,22 @@
           <td class="noDataMsg" [attr.colspan]="firebase.arenas.length">Informace o dostupnosti kurtů nejsou pro tento den k dispozici.</td>
         </tr>
       </div>
-
-
+    </div>  
+    
+    <div class="updateTimeMsg">Informace o obsazenosti badmintonových kurtů v Brně se automaticky aktualizují každých 15 minut. <br>Poslední aktualizace: <span title="{{ firebase.update_time*1000 | date: 'HH:mm:ss d.M.y' }}">{{ firebase.update_time*1000 | date: 'HH:mm:ss' }}</span></div>
+    
+  </div>
+  
 
       
-    <ng-template #loading let-availability>
-      <div class="lds-bars">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </ng-template>
-
-
-    </div>  
+  <ng-template #loading let-availability>
+    <div class="lds-bars">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </ng-template>
 
     <footer id="pageFooter">
       © 2017 <a href="https://skym.cz" target="_blank" title="Otevřít stránku sKým.cz">sKým.cz</a> &middot; v1

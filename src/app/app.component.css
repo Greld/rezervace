@@ -48,6 +48,12 @@
 .dateIcon { width: 30px; position: relative; top: 7px; margin-right: 7px; }
 .studentIcon { width: 30px; position: relative; top: 7px; margin-right: 7px; }
 
+.updateTimeMsg { margin-top: 12px; color: grey; font-size: 13px; padding: 0 5px; }
+.updateTimeMsg br { display: none; }
+@media screen and (max-width: 790px) {
+    .updateTimeMsg br { display: inline; }
+}
+
 /* LOADER */
 @keyframes lds-bars {
     0% { opacity: 1; }
@@ -69,7 +75,7 @@
 
 
 @media screen and (max-width: 640px) {
-    .filters { text-align: left; width: 240px; margin: 0 auto; }
+    .filters { text-align: left; width: 250px; margin: 0 auto; }
     .reservationBox { margin-top: 20px; }
     .reservationTableRow .hourCell { padding: 3px; }
 }
