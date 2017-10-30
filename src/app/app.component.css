@@ -1,6 +1,8 @@
 .textGray { color: rgb(88, 88, 88); }
 
-.reservationBox { max-width: 100%; margin-top: 30px; overflow: auto; min-height: 800px; }
+.reservationTablePage { min-height: 800px; text-align:center }
+
+.reservationBox { max-width: 100%; margin-top: 30px; overflow: auto; }
 
 .reservationTable { display: table; border-collapse: collapse; margin: 0 auto; }
 .reservationTableRow { display: table-row; }

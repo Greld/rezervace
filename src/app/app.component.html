@@ -1,6 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  
+<!--The content below is only a placeholder and can be replaced.-->  
   <nav class="navbar">
     <div class="container">      
       <div class="rightPart">
@@ -13,6 +11,8 @@
       </div>
     </div>
   </nav>
+  
+<div class="reservationTablePage">
   <div class="filters">
     <div class="filterBox dateBox">
       <img src="./assets/images/date_icon.svg" class="dateIcon" alt="Datum:" title="Datum:"> 
@@ -25,7 +25,7 @@
       </select>  
     </div>
   </div>
-  <div *ngIf="firebaseObserver | async as firebase; else loading">
+  <div  class="firebaseLoadedPart" *ngIf="firebaseObserver | async as firebase; else loading">
 
     <div class="reservationBox">
       <div class="reservationTable" [ngClass]="{'firstColumnFixed' : firstColumnFixed}">
@@ -63,20 +63,19 @@
     
     <div class="updateTimeMsg">Informace o obsazenosti badmintonových kurtů v Brně se automaticky aktualizují každých 15 minut. <br>Poslední aktualizace: <span title="{{ firebase.update_time*1000 | date: 'HH:mm:ss d.M.y' }}">{{ firebase.update_time*1000 | date: 'HH:mm:ss' }}</span></div>
     
-  </div>
-  
+  </div>  
+</div>
 
       
-  <ng-template #loading let-availability>
-    <div class="lds-bars">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </ng-template>
+<ng-template #loading let-availability>
+  <div class="lds-bars">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ng-template>
 
-    <footer id="pageFooter">
-      © 2017 <a href="https://skym.cz" target="_blank" title="Otevřít stránku sKým.cz">sKým.cz</a> &middot; v1
-    </footer>
-</div>
+<footer id="pageFooter">
+  © 2017 <a href="https://skym.cz" target="_blank" title="Otevřít stránku sKým.cz">sKým.cz</a> &middot; v1
+</footer>
