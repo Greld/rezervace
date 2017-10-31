@@ -41,16 +41,17 @@
         <ng-container *ngIf="firebase.availability[today]">
           <div class="reservationTableRow" *ngFor="let hour of hours">       
               <div class="reservationTableCell hourCell">{{ hour }}</div>
-              <div class="reservationTableCell arenaCell" *ngFor="let arena of firebase.arenas" [ngClass]="{'timeSlot': true, 'tableCell': true, 'full': firebase.availability[today][arena.playgroundId][hour].availability == 0, 'closed': !firebase.availability[today][arena.playgroundId][hour].price, 'available': firebase.availability[today][arena.playgroundId][hour].availability > 0 && firebase.availability[today][arena.playgroundId][hour].price }">
-                <a *ngIf="firebase.availability[today][arena.playgroundId][hour].availability != 0 && firebase.availability[today][arena.playgroundId][hour].price" class="tableCellWrap" href="{{getReservationUrl(arena.arenaId, today)}}" target="_blank" rel="noopener" title="Rezervovat kurt přes sKým.cz.">
+              <div class="reservationTableCell arenaCell" *ngFor="let arena of firebase.arenas" [ngClass]="arenaCellClasses(firebase.availability[today][arena.playgroundId][hour], today, hour)">
+                <a *ngIf="!isInPast(today, hour) && firebase.availability[today][arena.playgroundId][hour].availability != 0 && firebase.availability[today][arena.playgroundId][hour].price" class="tableCellWrap" href="{{getReservationUrl(arena.arenaId, today)}}" target="_blank" rel="noopener" title="Rezervovat kurt přes sKým.cz.">
                     <img src="./assets/images/price_icon.svg" class="priceIcon" alt="Cena:" title="Cena za 1 hodinu"> {{ firebase.availability[today][arena.playgroundId][hour].price[priceGroupId] }} Kč
                     <img src="./assets/images/court_icon.svg" class="courtIcon" alt="Kurtů:" title="Počet volných kurtů"> {{ firebase.availability[today][arena.playgroundId][hour].availability }}
                 </a>
-                <span *ngIf="firebase.availability[today][arena.playgroundId][hour].availability == 0 && firebase.availability[today][arena.playgroundId][hour].price" class="tableCellWrap" title="Plně obsazeno">
+                <span *ngIf="!isInPast(today, hour) && firebase.availability[today][arena.playgroundId][hour].availability == 0 && firebase.availability[today][arena.playgroundId][hour].price" class="tableCellWrap" title="Plně obsazeno">
                     <img src="./assets/images/price_icon.svg" class="priceIcon" alt="Cena:" title="Cena za 1 hodinu"> {{ firebase.availability[today][arena.playgroundId][hour].price[priceGroupId] }} Kč
                     <img src="./assets/images/court_icon.svg" class="courtIcon" alt="Kurtů:" title="Počet volných kurtů"> {{ firebase.availability[today][arena.playgroundId][hour].availability }}
                 </span>              
                 <span *ngIf="!firebase.availability[today][arena.playgroundId][hour].price" class="tableCellWrap" title="Zavřeno">&nbsp;</span>
+                <span *ngIf="firebase.availability[today][arena.playgroundId][hour].price && isInPast(today, hour)" class="tableCellWrap" title="Uplynulé">&nbsp;</span>
               </div>
           </div> 
         </ng-container>

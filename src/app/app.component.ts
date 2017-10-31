@@ -1,6 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent {
   title = 'Rezervace'; 
-  today = new Date().toJSON().slice(0,10);
+  today = moment().format("YYYY-MM-DD"); 
   hours = [];
   db: AngularFireDatabase;
   priceGroups = [{
@@ -46,6 +47,11 @@ export class AppComponent {
     return this.baseArenaUrl + "?id=" + arenaId + "&sport=0&date=" + date;
   }
 
+  isInPast(date, hour) {
+    var time = moment(date).hour(parseInt(hour.substr(0,2))).minutes(parseInt(hour.substr(3,2)));
+    return (time.isBefore(moment()));
+  }
+
   checkWidth() {
     var tableWidth = this.el.nativeElement.querySelector(".reservationTable").clientWidth;
     var boxWidth = this.el.nativeElement.querySelector(".reservationBox").clientWidth;
@@ -54,6 +60,20 @@ export class AppComponent {
     } else {
       this.firstColumnFixed = false;
     }
+  }
+
+  arenaCellClasses(arenaData, today, hour) {
+    var isInPast = this.isInPast(today, hour);
+    var isClosed = !arenaData.price;
+    var classes = {
+      'timeSlot': true, 
+      'tableCell': true, 
+      'full': !isInPast && !isClosed && arenaData.availability == 0, 
+      'available': !isInPast && !isClosed && arenaData.availability > 0, 
+      'closed': isClosed, 
+      'inPast': !isClosed && this.isInPast(today, hour) 
+    };
+    return classes;
   }
 
 }
