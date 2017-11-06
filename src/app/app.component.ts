@@ -1,18 +1,18 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import * as moment from 'moment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Rezervace'; 
+export class AppComponent implements OnInit {
+  title = 'rezervace-kurtu.cz'; 
   today = moment().format("YYYY-MM-DD"); 
   hours = [];
-  db: AngularFireDatabase;
   priceGroups = [{
     id: 1,
     name: "Dospělí"
@@ -23,16 +23,20 @@ export class AppComponent {
   priceGroupId = this.priceGroups[0].id;
   firebaseObserver: Observable<any>;
   firstColumnFixed = false;
-  el:ElementRef;
   baseArenaUrl = "https://skym.cz/sportoviste/";
   baseArenaImg = "https://skym.cz/";
 
-  constructor(db: AngularFireDatabase, el:ElementRef) {
-    this.db = db;
-    this.el = el;
+  constructor(private db: AngularFireDatabase, private el:ElementRef, private http: HttpClient) {
     for (var i = 6; i < 23; i+=0.5) { this.hours.push(Math.floor(i).toString().padStart(2, "0") + ":" + ((i - Math.floor(i)) * 60).toString().padStart(2, "0"));}
 
     this.firebaseObserver = this.db.object('/rezervace-kurtu/').valueChanges();   
+  }
+
+  ngOnInit() {
+    this.http.get('https://skym.sk/cron/fb').subscribe(data => {
+      console.log("response aktualizace: ");
+      console.log(data);      
+    });
   }
   
   ngAfterViewInit() {

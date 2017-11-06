@@ -51,7 +51,7 @@
 .dateIcon { width: 30px; position: relative; top: 7px; margin-right: 7px; }
 .studentIcon { width: 30px; position: relative; top: 7px; margin-right: 7px; }
 
-.updateTimeMsg { margin-top: 12px; color: grey; font-size: 13px; padding: 0 5px; }
+.updateTimeMsg { margin-top: 12px; color: grey; font-size: 13px; padding: 0 5px; text-align: right; }
 .updateTimeMsg br { display: none; }
 @media screen and (max-width: 790px) {
     .updateTimeMsg br { display: inline; }
