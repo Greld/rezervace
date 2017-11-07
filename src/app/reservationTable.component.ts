@@ -36,9 +36,15 @@ export class ReservationTableComponent implements OnInit {
       console.log("response aktualizace: ");
       console.log(data);      
     });
-    this.today = this.route.snapshot.paramMap.get('date');
+    var todayFromUrl = this.route.snapshot.paramMap.get('date');
+    if (todayFromUrl) {
+        this.today = todayFromUrl;
+    }
     // (+) turns the string into a number
-    this.priceGroupId = +this.route.snapshot.paramMap.get('priceGroupId');
+    var priceGroupIdFromUrl = +this.route.snapshot.paramMap.get('priceGroupId');
+    if (priceGroupIdFromUrl) {
+        this.priceGroupId = priceGroupIdFromUrl;
+    }
   }
   
   ngAfterViewInit() {
