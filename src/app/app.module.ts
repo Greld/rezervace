@@ -6,12 +6,20 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import {Ng2FittextModule} from "ng2-fittext/ng2fittext";
 import {HttpClientModule} from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { ReservationTableComponent } from './reservationTable.component';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/obsazenost', pathMatch: 'full' },  
+  { path: 'obsazenost', component: ReservationTableComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReservationTableComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +27,14 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     Ng2FittextModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

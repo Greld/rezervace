@@ -1,0 +1,66 @@
+<div class="reservationTablePage">
+    <div class="filters">
+      <div class="filterBox dateBox">
+        <img src="./assets/images/date_icon.svg" class="dateIcon" alt="Datum:" title="Datum:"> 
+        <input [ngModel]="today" (ngModelChange)="setDate($event)" type="date" class="dateInput" >
+      </div>
+      <div class="filterBox priceGroupBox">
+        <img src="./assets/images/student_icon.svg" class="studentIcon" alt="Cenová skupina:" title="Cenová skupina:"> 
+        <select [(ngModel)]="priceGroupId" (ngModelChange)="filterChanged()" class="priceGroupSelect">
+          <option *ngFor="let priceGroup of priceGroups" [value]="priceGroup.id">{{priceGroup.name}}</option>
+        </select>  
+      </div>
+    </div>
+    <div  class="firebaseLoadedPart" *ngIf="firebaseObserver | async as firebase; else loading">
+  
+      <div class="reservationBox">
+        <div class="reservationTable" [ngClass]="{'firstColumnFixed' : firstColumnFixed}">
+  
+          <div class="reservationTableRow reservationTableHeader">
+            <div class="reservationTableCell hourCell">&nbsp;</div>
+            <a href="{{baseArenaUrl + arena.skymUrl}}" target="_blank" rel="noopener" title="Zobrazit detail haly na sKým.cz." class="reservationTableCell arenaCell" *ngFor="let arena of firebase.arenas">
+              <span class="bgBox" [ngStyle]="{'background-image': 'url(' + baseArenaImg + arena.img + ')' }"></span>
+              <div class="arenaTitle"><span [fittext]="true" [activateOnResize]="true" [minFontSize]="10" [useMaxFontSize]="true">{{arena.name}}</span></div>
+            </a>
+          </div>
+  
+          <ng-container *ngIf="firebase.availability[today]">
+            <div class="reservationTableRow" *ngFor="let hour of hours">       
+                <div class="reservationTableCell hourCell">{{ hour }}</div>
+                <div class="reservationTableCell arenaCell" *ngFor="let arena of firebase.arenas" [ngClass]="arenaCellClasses(firebase.availability[today][arena.playgroundId][hour], today, hour)">
+                  <a *ngIf="!isInPast(today, hour) && firebase.availability[today][arena.playgroundId][hour].availability != 0 && firebase.availability[today][arena.playgroundId][hour].price" class="tableCellWrap" href="{{getReservationUrl(arena.arenaId, today)}}" target="_blank" rel="noopener" title="Rezervovat kurt přes sKým.cz.">
+                      <img src="./assets/images/price_icon.svg" class="priceIcon" alt="Cena:" title="Cena za 1 hodinu"> {{ firebase.availability[today][arena.playgroundId][hour].price[priceGroupId] }} Kč
+                      <img src="./assets/images/court_icon.svg" class="courtIcon" alt="Kurtů:" title="Počet volných kurtů"> {{ firebase.availability[today][arena.playgroundId][hour].availability }}
+                  </a>
+                  <span *ngIf="!isInPast(today, hour) && firebase.availability[today][arena.playgroundId][hour].availability == 0 && firebase.availability[today][arena.playgroundId][hour].price" class="tableCellWrap" title="Plně obsazeno">
+                      <img src="./assets/images/price_icon.svg" class="priceIcon" alt="Cena:" title="Cena za 1 hodinu"> {{ firebase.availability[today][arena.playgroundId][hour].price[priceGroupId] }} Kč
+                      <img src="./assets/images/court_icon.svg" class="courtIcon" alt="Kurtů:" title="Počet volných kurtů"> {{ firebase.availability[today][arena.playgroundId][hour].availability }}
+                  </span>              
+                  <span *ngIf="!firebase.availability[today][arena.playgroundId][hour].price" class="tableCellWrap" title="Zavřeno">&nbsp;</span>
+                  <span *ngIf="firebase.availability[today][arena.playgroundId][hour].price && isInPast(today, hour)" class="tableCellWrap" title="Uplynulé">&nbsp;</span>
+                </div>
+            </div> 
+          </ng-container>
+          <tr class="noDataRow" *ngIf="!firebase.availability[today]">
+            <td></td>
+            <td class="noDataMsg" [attr.colspan]="firebase.arenas.length">Informace o dostupnosti kurtů nejsou pro tento den k dispozici.</td>
+          </tr>
+        </div>
+      </div>  
+      
+      <div class="updateTimeMsg container">
+          <span *ngIf="firebase.update_status.isUpdating">Aktualizuji... {{ firebase.update_status.progress }} % &middot; </span>
+        Poslední aktualizace: <span title="{{ firebase.update_time*1000 | date: 'HH:mm:ss d.M.y' }}">{{ firebase.update_time*1000 | date: 'HH:mm:ss' }}</span>
+      </div>
+      
+    </div>  
+</div>
+        
+<ng-template #loading let-availability>
+    <div class="lds-bars">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</ng-template>
