@@ -10,12 +10,11 @@ body {
 
 .container { max-width: 1212px; margin: 0 auto; }
 
-.navbar { background-color: #74E5BA; color: white; padding: 12px 20px; margin-bottom: 20px; box-shadow: 0px 2px 2px #cbcbcb; }
+.navbar { background-color: #ffffff; color: white; padding: 12px 20px; margin-bottom: 20px; box-shadow: 0px 2px 2px #cbcbcb; }
 .navbar .container { text-align: left; }
 .navbar .rightPart { float: right;}
 .navbar h1 { font-size: 16px; margin: 0; display: inline; }
-.navbar h1 a { color: #333; display: inline-block; padding-left: 36px; text-decoration: none; position: relative; transition: color 0.3s ease-out; }
-.navbar h1 a::before { width: 30px; height: 30px; position: absolute; left: 0px; top: -6px; content: " "; background-image: url(https://badminton.skym.cz/assets/images/logo/logo-square-mini.png) }
+.navbar h1 a { color: #333; display: inline-block; text-decoration: none; position: relative; transition: color 0.3s ease-out; }
 .navbar h1 a:hover,
 .navbar h1 a:focus { color: #000; }
 .navbar h1 .appendix { color: #727070; font-weight: normal; }
@@ -33,7 +32,7 @@ body {
 
 #pageFooter {
     color: grey;
-    background-color: #74E5BA;
+    background-color: #ffffff;
     padding: 8px 12px;
     margin-top: 30px;
     box-shadow: 0px -1px 2px #cbcbcb;
